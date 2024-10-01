@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		381AECB82CA724C0000C5957 /* HikerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECB72CA724C0000C5957 /* HikerApp.swift */; };
+		381AECBA2CA724C0000C5957 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECB92CA724C0000C5957 /* ContentView.swift */; };
+		381AECBC2CA724C1000C5957 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 381AECBB2CA724C1000C5957 /* Assets.xcassets */; };
+		381AECBF2CA724C1000C5957 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 381AECBE2CA724C1000C5957 /* Preview Assets.xcassets */; };
+		381AECC92CA732B3000C5957 /* AuthContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECC82CA732B3000C5957 /* AuthContext.swift */; };
+		381AECCB2CA73352000C5957 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECCA2CA73352000C5957 /* User.swift */; };
+		381AECCE2CA750A8000C5957 /* OAuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECCD2CA750A8000C5957 /* OAuthController.swift */; };
+		381AECD12CA87D1A000C5957 /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECD02CA87D1A000C5957 /* TokenResponse.swift */; };
+		381AECD32CA87E4C000C5957 /* AthleteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECD22CA87E4C000C5957 /* AthleteResponse.swift */; };
+		381AECD52CA8843E000C5957 /* RiderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECD42CA8843E000C5957 /* RiderError.swift */; };
+		381AECD72CA8B432000C5957 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECD62CA8B432000C5957 /* LandingPageView.swift */; };
+		381AECD92CA8BEF9000C5957 /* ClubResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECD82CA8BEF9000C5957 /* ClubResponse.swift */; };
+		381AECDB2CA8C039000C5957 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECDA2CA8C039000C5957 /* Club.swift */; };
+		381AECDD2CA8ECBA000C5957 /* ClubsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECDC2CA8ECBA000C5957 /* ClubsView.swift */; };
+		381AECDF2CA91328000C5957 /* ClubDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECDE2CA91328000C5957 /* ClubDetailView.swift */; };
+		381AECE12CA9BA33000C5957 /* StatsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECE02CA9BA33000C5957 /* StatsResponse.swift */; };
+		381AECE32CA9CDC7000C5957 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECE22CA9CDC7000C5957 /* ProfileView.swift */; };
+		381AECE52CA9E298000C5957 /* ActivityResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECE42CA9E298000C5957 /* ActivityResponse.swift */; };
+		381AECE72CA9E398000C5957 /* Kudo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECE62CA9E398000C5957 /* Kudo.swift */; };
+		381AECE92CA9F559000C5957 /* KudosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECE82CA9F559000C5957 /* KudosView.swift */; };
+		381AECEB2CAA2962000C5957 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECEA2CAA2962000C5957 /* Segment.swift */; };
+		381AECED2CAA36D6000C5957 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECEC2CAA36D6000C5957 /* LocationModel.swift */; };
+		381AECEF2CAA373F000C5957 /* SegmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECEE2CAA373F000C5957 /* SegmentsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		381AECB42CA724C0000C5957 /* Rider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rider.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		381AECB72CA724C0000C5957 /* HikerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikerApp.swift; sourceTree = "<group>"; };
+		381AECB92CA724C0000C5957 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		381AECBB2CA724C1000C5957 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		381AECBE2CA724C1000C5957 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		381AECC52CA72A0A000C5957 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		381AECC82CA732B3000C5957 /* AuthContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthContext.swift; sourceTree = "<group>"; };
+		381AECCA2CA73352000C5957 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		381AECCD2CA750A8000C5957 /* OAuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthController.swift; sourceTree = "<group>"; };
+		381AECD02CA87D1A000C5957 /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
+		381AECD22CA87E4C000C5957 /* AthleteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteResponse.swift; sourceTree = "<group>"; };
+		381AECD42CA8843E000C5957 /* RiderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiderError.swift; sourceTree = "<group>"; };
+		381AECD62CA8B432000C5957 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
+		381AECD82CA8BEF9000C5957 /* ClubResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubResponse.swift; sourceTree = "<group>"; };
+		381AECDA2CA8C039000C5957 /* Club.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
+		381AECDC2CA8ECBA000C5957 /* ClubsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubsView.swift; sourceTree = "<group>"; };
+		381AECDE2CA91328000C5957 /* ClubDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubDetailView.swift; sourceTree = "<group>"; };
+		381AECE02CA9BA33000C5957 /* StatsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsResponse.swift; sourceTree = "<group>"; };
+		381AECE22CA9CDC7000C5957 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		381AECE42CA9E298000C5957 /* ActivityResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityResponse.swift; sourceTree = "<group>"; };
+		381AECE62CA9E398000C5957 /* Kudo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kudo.swift; sourceTree = "<group>"; };
+		381AECE82CA9F559000C5957 /* KudosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KudosView.swift; sourceTree = "<group>"; };
+		381AECEA2CAA2962000C5957 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		381AECEC2CAA36D6000C5957 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		381AECEE2CAA373F000C5957 /* SegmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		381AECB12CA724C0000C5957 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		381AECAB2CA724C0000C5957 = {
+			isa = PBXGroup;
+			children = (
+				381AECB62CA724C0000C5957 /* Hiker */,
+				381AECB52CA724C0000C5957 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		381AECB52CA724C0000C5957 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				381AECB42CA724C0000C5957 /* Rider.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		381AECB62CA724C0000C5957 /* Hiker */ = {
+			isa = PBXGroup;
+			children = (
+				381AECC72CA7328B000C5957 /* View */,
+				381AECC62CA73279000C5957 /* Model */,
+				381AECC52CA72A0A000C5957 /* Info.plist */,
+				381AECB72CA724C0000C5957 /* HikerApp.swift */,
+				381AECBB2CA724C1000C5957 /* Assets.xcassets */,
+				381AECBD2CA724C1000C5957 /* Preview Content */,
+				381AECD42CA8843E000C5957 /* RiderError.swift */,
+			);
+			path = Hiker;
+			sourceTree = "<group>";
+		};
+		381AECBD2CA724C1000C5957 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				381AECBE2CA724C1000C5957 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		381AECC62CA73279000C5957 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				381AECCD2CA750A8000C5957 /* OAuthController.swift */,
+				381AECCF2CA87CDE000C5957 /* API Response */,
+				381AECC82CA732B3000C5957 /* AuthContext.swift */,
+				381AECCA2CA73352000C5957 /* User.swift */,
+				381AECDA2CA8C039000C5957 /* Club.swift */,
+				381AECE62CA9E398000C5957 /* Kudo.swift */,
+				381AECEC2CAA36D6000C5957 /* LocationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		381AECC72CA7328B000C5957 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				381AECB92CA724C0000C5957 /* ContentView.swift */,
+				381AECD62CA8B432000C5957 /* LandingPageView.swift */,
+				381AECDC2CA8ECBA000C5957 /* ClubsView.swift */,
+				381AECDE2CA91328000C5957 /* ClubDetailView.swift */,
+				381AECE22CA9CDC7000C5957 /* ProfileView.swift */,
+				381AECE82CA9F559000C5957 /* KudosView.swift */,
+				381AECEE2CAA373F000C5957 /* SegmentsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		381AECCF2CA87CDE000C5957 /* API Response */ = {
+			isa = PBXGroup;
+			children = (
+				381AECD02CA87D1A000C5957 /* TokenResponse.swift */,
+				381AECD22CA87E4C000C5957 /* AthleteResponse.swift */,
+				381AECD82CA8BEF9000C5957 /* ClubResponse.swift */,
+				381AECE02CA9BA33000C5957 /* StatsResponse.swift */,
+				381AECE42CA9E298000C5957 /* ActivityResponse.swift */,
+				381AECEA2CAA2962000C5957 /* Segment.swift */,
+			);
+			path = "API Response";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		381AECB32CA724C0000C5957 /* Rider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 381AECC22CA724C1000C5957 /* Build configuration list for PBXNativeTarget "Rider" */;
+			buildPhases = (
+				381AECB02CA724C0000C5957 /* Sources */,
+				381AECB12CA724C0000C5957 /* Frameworks */,
+				381AECB22CA724C0000C5957 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Rider;
+			productName = Hiker;
+			productReference = 381AECB42CA724C0000C5957 /* Rider.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		381AECAC2CA724C0000C5957 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					381AECB32CA724C0000C5957 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 381AECAF2CA724C0000C5957 /* Build configuration list for PBXProject "Rider" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 381AECAB2CA724C0000C5957;
+			productRefGroup = 381AECB52CA724C0000C5957 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				381AECB32CA724C0000C5957 /* Rider */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		381AECB22CA724C0000C5957 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				381AECBF2CA724C1000C5957 /* Preview Assets.xcassets in Resources */,
+				381AECBC2CA724C1000C5957 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		381AECB02CA724C0000C5957 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				381AECDB2CA8C039000C5957 /* Club.swift in Sources */,
+				381AECD52CA8843E000C5957 /* RiderError.swift in Sources */,
+				381AECED2CAA36D6000C5957 /* LocationModel.swift in Sources */,
+				381AECEF2CAA373F000C5957 /* SegmentsView.swift in Sources */,
+				381AECCB2CA73352000C5957 /* User.swift in Sources */,
+				381AECE92CA9F559000C5957 /* KudosView.swift in Sources */,
+				381AECBA2CA724C0000C5957 /* ContentView.swift in Sources */,
+				381AECEB2CAA2962000C5957 /* Segment.swift in Sources */,
+				381AECB82CA724C0000C5957 /* HikerApp.swift in Sources */,
+				381AECD12CA87D1A000C5957 /* TokenResponse.swift in Sources */,
+				381AECE72CA9E398000C5957 /* Kudo.swift in Sources */,
+				381AECE12CA9BA33000C5957 /* StatsResponse.swift in Sources */,
+				381AECDF2CA91328000C5957 /* ClubDetailView.swift in Sources */,
+				381AECC92CA732B3000C5957 /* AuthContext.swift in Sources */,
+				381AECD32CA87E4C000C5957 /* AthleteResponse.swift in Sources */,
+				381AECD72CA8B432000C5957 /* LandingPageView.swift in Sources */,
+				381AECE32CA9CDC7000C5957 /* ProfileView.swift in Sources */,
+				381AECD92CA8BEF9000C5957 /* ClubResponse.swift in Sources */,
+				381AECE52CA9E298000C5957 /* ActivityResponse.swift in Sources */,
+				381AECDD2CA8ECBA000C5957 /* ClubsView.swift in Sources */,
+				381AECCE2CA750A8000C5957 /* OAuthController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		381AECC02CA724C1000C5957 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		381AECC12CA724C1000C5957 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		381AECC32CA724C1000C5957 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Hiker/Preview Content\"";
+				DEVELOPMENT_TEAM = S2AWZTG639;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Hiker/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bora.niladri.Hiker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		381AECC42CA724C1000C5957 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Hiker/Preview Content\"";
+				DEVELOPMENT_TEAM = S2AWZTG639;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Hiker/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = bora.niladri.Hiker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		381AECAF2CA724C0000C5957 /* Build configuration list for PBXProject "Rider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				381AECC02CA724C1000C5957 /* Debug */,
+				381AECC12CA724C1000C5957 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		381AECC22CA724C1000C5957 /* Build configuration list for PBXNativeTarget "Rider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				381AECC32CA724C1000C5957 /* Debug */,
+				381AECC42CA724C1000C5957 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 381AECAC2CA724C0000C5957 /* Project object */;
+}
