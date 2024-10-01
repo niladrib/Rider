@@ -31,6 +31,7 @@
 		381AECED2CAA36D6000C5957 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECEC2CAA36D6000C5957 /* LocationModel.swift */; };
 		381AECEF2CAA373F000C5957 /* SegmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECEE2CAA373F000C5957 /* SegmentsView.swift */; };
 		38D3B0AC2CABA47A00060FD6 /* GenericRetriableErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3B0AB2CABA47A00060FD6 /* GenericRetriableErrorView.swift */; };
+		38D3B0AE2CABB53000060FD6 /* Binding+onChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3B0AD2CABB53000060FD6 /* Binding+onChange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		381AECEC2CAA36D6000C5957 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		381AECEE2CAA373F000C5957 /* SegmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentsView.swift; sourceTree = "<group>"; };
 		38D3B0AB2CABA47A00060FD6 /* GenericRetriableErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericRetriableErrorView.swift; sourceTree = "<group>"; };
+		38D3B0AD2CABB53000060FD6 /* Binding+onChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+onChange.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				381AECBB2CA724C1000C5957 /* Assets.xcassets */,
 				381AECBD2CA724C1000C5957 /* Preview Content */,
 				381AECD42CA8843E000C5957 /* RiderError.swift */,
+				38D3B0AD2CABB53000060FD6 /* Binding+onChange.swift */,
 			);
 			path = Hiker;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				381AECBA2CA724C0000C5957 /* ContentView.swift in Sources */,
 				381AECEB2CAA2962000C5957 /* Segment.swift in Sources */,
 				381AECB82CA724C0000C5957 /* HikerApp.swift in Sources */,
+				38D3B0AE2CABB53000060FD6 /* Binding+onChange.swift in Sources */,
 				381AECD12CA87D1A000C5957 /* TokenResponse.swift in Sources */,
 				381AECE72CA9E398000C5957 /* Kudo.swift in Sources */,
 				381AECE12CA9BA33000C5957 /* StatsResponse.swift in Sources */,

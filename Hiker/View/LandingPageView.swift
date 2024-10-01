@@ -18,7 +18,7 @@ struct LandingPageView: View {
   @State private var path = [Int]()
   
   var body: some View {
-    TabView(selection: $selectedTab) {
+    TabView(selection: $selectedTab.onChange{ _ in path = []}) {
       NavigationStack(path: $path) {
         ClubsView(authContext: authContext, path: $path)
       }
