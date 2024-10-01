@@ -152,12 +152,13 @@ struct LocationTrackingView: View {
           Text("Search for Segments")
         }
       })
+      .disabled(showProgressView)
       .alert("No Segments Found", isPresented: $showingNoSegmentsFoundAlert) {
           Button("OK", role: .cancel) { 
             showingNoSegmentsFoundAlert = false
           }
       } message: {
-          Text("No segements found in the map area. Try widening your search by zooming out.")
+          Text("No segements found in the map display area. \nTry widening your search by zooming out.")
       }
       .padding()
       .buttonStyle(.borderedProminent)
