@@ -58,11 +58,6 @@ struct ClubsView: View {
         ProgressView()
       }
       if showFetchFailed {
-//        HStack {
-//          Image(systemName: "exclamationmark.triangle")
-//          Text("Error.")
-//        }
-//        .foregroundColor(Color.red)
         GenericRetriableErrorView {
           startFetchTask()
         }
@@ -70,16 +65,6 @@ struct ClubsView: View {
       }
     }
     .navigationTitle("Clubs")
-    /**
-     Commented out because Swift UI has a weird pull-to-refresh bug
-     */
-//    .refreshable {
-//      if enablePullToRefresh {
-//        Task {
-//          await fetchClubs()
-//        }
-//      }
-//    }
     .onAppear {
       startFetchTask()
     }
@@ -102,8 +87,12 @@ struct ClubsView: View {
   }
   
   private func fetchClubs() async {
+    defer {
+      showProgressView = false
+    }
     self.authContext.loggedInUser?.cancelClubPagesFetch()
     showProgressView = true
+    showFetchFailed = false
     do {
       _ = try await self.authContext.loggedInUser?.fetchClubs()
     } catch RiderError.authError(_) {
@@ -115,7 +104,6 @@ struct ClubsView: View {
     catch {
       showFetchFailed = true
     }
-    showProgressView = false
   }
   
 }

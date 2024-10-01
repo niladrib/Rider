@@ -11,6 +11,7 @@ struct KudosView: View {
   @Bindable var authContext: AuthContext
   @Binding private(set) var path: [Int]
   @State private(set) var showProgressView = true
+  @State private(set) var showFetchFailed = false
   private(set) var fetchClubsOnAppear = true //for preview only
   
   var kudoMap: [ActivityResponse:[Kudo]] {
@@ -32,31 +33,43 @@ struct KudosView: View {
       if showProgressView {
         ProgressView()
       }
+      if showFetchFailed {
+        GenericRetriableErrorView {
+          startFetchTask()
+        }
+        .font(.title2)
+      }
     }
     .navigationTitle("Kudos")
     .onAppear {
-      Task {
-        defer {
-          showProgressView = false
-        }
-        showProgressView = true
-        do {
-          try await authContext.loggedInUser?.fetchKudos()
-        }
-        catch RiderError.authError(_) {
-          print("Got 401 when fetching clubs; logging out user")
-          authContext.loggedInUser = nil
-          authContext.isLoggedIn = false
-          path = []
-        }
-        catch {
-          print("fetchKudos failed")
-        }
-      }
+      startFetchTask()
     }
     .onDisappear() {
       Task {
         authContext.loggedInUser?.cancelFetchKudos()
+      }
+    }
+  }
+  
+  func startFetchTask() {
+    Task {
+      defer{
+        showProgressView = false
+      }
+      showFetchFailed = false
+      showProgressView = true
+      do {
+        try await authContext.loggedInUser?.fetchKudos()
+      }
+      catch RiderError.authError(_) {
+        print("Got 401 when fetching clubs; logging out user")
+        authContext.loggedInUser = nil
+        authContext.isLoggedIn = false
+        path = []
+      }
+      catch {
+        showFetchFailed = true
+        print("fetchKudos failed")
       }
     }
   }

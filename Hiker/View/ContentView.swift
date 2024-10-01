@@ -42,6 +42,7 @@ struct ContentView: View {
         
       }
     }
+    .buttonStyle(.borderedProminent)
   }
   
   var loggedInView: some View {

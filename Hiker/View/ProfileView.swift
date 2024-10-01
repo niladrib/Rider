@@ -11,6 +11,7 @@ struct ProfileView: View {
   @Bindable var authContext: AuthContext
   @Binding private(set) var path: [Int]
   @State private(set) var showProgressView = false
+  @State private(set) var showFetchFailed = false
 
   var showStats: Bool {
     return authContext.loggedInUser?.recentRideTotals != nil &&
@@ -40,24 +41,38 @@ struct ProfileView: View {
       if showProgressView {
         ProgressView()
       }
+      if showFetchFailed {
+        GenericRetriableErrorView {
+          startFetchTask()
+        }
+        .font(.title2)
+      }
     }
     .navigationTitle("Profile")
     .onAppear{
-      if self.fetchStatsOnAppear {
-        Task {
-          defer {
-            showProgressView = false
-          }
-          showProgressView = true
-          do {
-            try await authContext.loggedInUser?.fetchRideStats()
-          }
-          catch RiderError.authError(_) {
-            print("Got 401 when fetching clubs; logging out user")
-            authContext.loggedInUser = nil
-            authContext.isLoggedIn = false
-            path = []
-          }
+      startFetchTask()
+    }
+  }
+  
+  private func startFetchTask() {
+    if self.fetchStatsOnAppear {
+      Task {
+        defer {
+          showProgressView = false
+        }
+        showFetchFailed = false
+        showProgressView = true
+        do {
+          try await authContext.loggedInUser?.fetchRideStats()
+        }
+        catch RiderError.authError(_) {
+          print("Got 401 when fetching clubs; logging out user")
+          authContext.loggedInUser = nil
+          authContext.isLoggedIn = false
+          path = []
+        }
+        catch {
+          showFetchFailed = true
         }
       }
     }

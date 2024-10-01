@@ -16,6 +16,5 @@ struct HikerApp: App {
 //          print("Outh callback URL: \(url)")
         }
     }
-//    .modelContainer(for: AuthContext.self)
   }
 }

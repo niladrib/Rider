@@ -81,6 +81,7 @@ struct LocationTrackingView: View {
   @State var displayedSegment: Segment?
   @State private(set) var showProgressView = false
   @State private var showingNoSegmentsFoundAlert = false
+  @State private(set) var showFetchFailed = false
   
   var body: some View {
     VStack {
@@ -113,37 +114,12 @@ struct LocationTrackingView: View {
       }
       .frame(maxWidth: .infinity, maxHeight: 300)
       .clipped()
+      if showFetchFailed {
+        Text("Search failed. Please retry.")
+          .foregroundStyle(.red)
+      }
       Button(action: {
-        guard let center = currentRegion?.center,
-              let span = currentRegion?.span else {
-          return
-        }
-        self.segments = []
-        Task {
-          defer {
-            showProgressView = false
-          }
-          showProgressView = true
-          do {
-            guard let segments = try await authContext
-              .loggedInUser?
-              .getSegmentsFor(southwestCornerLatitutde: center.latitude - span.latitudeDelta/2,
-                              southwestCornerLongitude: center.longitude - span.longitudeDelta/2,
-                              northeastCornerLatitude: center.latitude + span.latitudeDelta/2,
-                              northeastCornerlongitude: center.longitude + span.longitudeDelta/2) else {
-              return
-            }
-//            print("segments near me=\(String(describing: segments))")
-            self.segments = segments
-            showingNoSegmentsFoundAlert = (segments.count == 0)
-          }
-          catch RiderError.authError(_) {
-            print("Got 401 when fetching clubs; logging out user")
-            authContext.loggedInUser = nil
-            authContext.isLoggedIn = false
-            path = []
-          }
-        }
+        startFetchTask()
       }, label: {
         HStack {
           if showProgressView {
@@ -172,6 +148,43 @@ struct LocationTrackingView: View {
       Spacer()
     }//VStack
     .navigationTitle("Segments")
+  }
+  
+  private func startFetchTask() {
+    guard let center = currentRegion?.center,
+          let span = currentRegion?.span else {
+      return
+    }
+    self.segments = []
+    Task {
+      defer {
+        showProgressView = false
+      }
+      showProgressView = true
+      showFetchFailed = false
+      do {
+        guard let segments = try await authContext
+          .loggedInUser?
+          .getSegmentsFor(southwestCornerLatitutde: center.latitude - span.latitudeDelta/2,
+                          southwestCornerLongitude: center.longitude - span.longitudeDelta/2,
+                          northeastCornerLatitude: center.latitude + span.latitudeDelta/2,
+                          northeastCornerlongitude: center.longitude + span.longitudeDelta/2) else {
+          return
+        }
+//            print("segments near me=\(String(describing: segments))")
+        self.segments = segments
+        showingNoSegmentsFoundAlert = (segments.count == 0)
+      }
+      catch RiderError.authError(_) {
+        print("Got 401 when fetching clubs; logging out user")
+        authContext.loggedInUser = nil
+        authContext.isLoggedIn = false
+        path = []
+      }
+      catch {
+        showFetchFailed = true
+      }
+    }
   }
   
   func showOnMap(_ segment: Segment) {
