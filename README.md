@@ -9,7 +9,7 @@ This app has no third-party dependencies. To run the app -
 ### Modeling State
 I use `@Observable` objects to model Application State and `@State` structs to model View State. 
 
-Model objects and API responses are modeled separately. I didn’t want to couple the two tightly despite a strong correspondence, which is to be expected. The `AuthContext`, `OAuthController` , and `LocationModel` objects are the root of the model graph, and all model objects are reachable from them. 
+Model objects and API responses are modeled separately. Despite a strong correspondence, which is to be expected, I didn’t want to couple the two tightly. The `AuthContext`, `OAuthController`, and `LocationModel` objects are the root of the model graph, and all model objects are reachable from them. 
 
 ### Error handling
 The error handling strategy is to either handle errors or to make them as visible as possible while minimizing user impact.  
