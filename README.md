@@ -45,7 +45,7 @@ The app needs a linter and unit tests.
 - A warning shows up in the run log that indicates that MapKit is making too many reverse geo-coding requests. To my knowledge, this doesn’t cause any issues with the user experience but should be looked into. 
 
 ## Attributions
-I have used the following work done by others because I thought they were well done, and I couldn’t really improve on it. 
+I have used the following work done by others - 
 
 1. https://www.andyibanez.com/posts/using-corelocation-with-swiftui/ Andy Ibanez demonstrates a great pattern on how to warn the user before asking them for location permissions using Core Location.
 2. https://luomein.medium.com/generic-swift-oauth-2-0-in-async-way-ba53f686263f shows how to implement an OAuth 2.0 flow using ASWebAuthenticationSession
