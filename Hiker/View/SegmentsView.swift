@@ -80,6 +80,7 @@ struct LocationTrackingView: View {
   @State var segments = [Segment]()
   @State var displayedSegment: Segment?
   @State private(set) var showProgressView = false
+  @State private var showingNoSegmentsFoundAlert = false
   
   var body: some View {
     VStack {
@@ -133,6 +134,7 @@ struct LocationTrackingView: View {
             }
             print("segments near me=\(String(describing: segments))")
             self.segments = segments
+            showingNoSegmentsFoundAlert = (segments.count == 0)
           }
           catch RiderError.authError(_) {
             print("Got 401 when fetching clubs; logging out user")
@@ -149,6 +151,13 @@ struct LocationTrackingView: View {
           Text("Search for Segments")
         }
       })
+      .alert("No Segments Found", isPresented: $showingNoSegmentsFoundAlert) {
+          Button("OK", role: .cancel) { 
+            showingNoSegmentsFoundAlert = false
+          }
+      } message: {
+          Text("No segements found in the map area. Try widening your search by zooming out.")
+      }
       .padding()
       .buttonStyle(.borderedProminent)
       List {
