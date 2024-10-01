@@ -62,7 +62,7 @@ class User {
       return clubs
     }
     clubs = [Club]()
-    print("fetching clubs")
+//    print("fetching clubs")
     do {
       for try await clubPage in clubPages{
         clubs?.append(contentsOf: clubPage)
@@ -179,7 +179,7 @@ class User {
     request.httpMethod = "POST"
     do {
       let (data, resp) = try await URLSession.shared.data(for: request)
-      print("response = \(String(describing: String(data: data, encoding: .utf8)))")
+//      print("response = \(String(describing: String(data: data, encoding: .utf8)))")
       guard let resp = resp as? HTTPURLResponse else {
         let msg = "Unexpected non-http response type"
         assert(true, msg)
@@ -212,7 +212,7 @@ body=\(String(describing: String(data: data, encoding: .utf8)))
         self.allRideTotals != nil {
       return
     }
-    print("fetchRideStats()")
+//    print("fetchRideStats()")
     guard let url = URL(string: "https://www.strava.com/api/v3/athletes/\(self.id)/stats") else {
       fatalError("malformed stats URL")
     }
@@ -224,12 +224,12 @@ body=\(String(describing: String(data: data, encoding: .utf8)))
       guard let resp = resp as? HTTPURLResponse else {
         fatalError("Unexpected non-http response type")
       }
-      print("data=\(String(describing: String(data: data, encoding: .utf8)))")
+//      print("data=\(String(describing: String(data: data, encoding: .utf8)))")
       switch resp.statusCode {
       case 200..<300:
         let decoder = JSONDecoder()
         let statResp = try decoder.decode(StatsResponse.self, from: data)
-        print("statResponse=\(statResp)")
+//        print("statResponse=\(statResp)")
         self.recentRideTotals = statResp.recent_ride_totals
         self.ytdRideTotals = statResp.ytd_ride_totals
         self.allRideTotals = statResp.all_ride_totals
@@ -264,7 +264,7 @@ body=\(String(describing: String(data: data, encoding: .utf8)))
       return
     }
     do {
-      print("fetching kudos from the backend")
+//      print("fetching kudos from the backend")
       self.kudos = [ActivityResponse: [Kudo]]()
       for try await activityPage in activityPages {
         var actitvitiesToFetch = [ActivityResponse]()
@@ -314,7 +314,7 @@ body=\(String(describing: String(data: data, encoding: .utf8)))
   }
   
   private func fetchKudos(activityId: Int)async throws -> [Kudo] {
-    print("fetching kudos")
+//    print("fetching kudos")
     /**
      We will not paginate this API. We will assume that an aactivity can have a
      max number of 30 kudos per activity
@@ -380,7 +380,7 @@ body=\(String(describing: String(data: data, encoding: .utf8)))
             continuation.finish(throwing: RiderError.unexpectedError(msg: "actitivy fetch task cancelled"))
             return
           }
-          print("fetching activity page=\(pageIdx)")
+//          print("fetching activity page=\(pageIdx)")
           let query = [URLQueryItem(name: "page", value: String(pageIdx)),
                        URLQueryItem(name: "per_page", value: "30")]
           guard var urlComponents = URLComponents(string: "https://www.strava.com/api/v3/athlete/activities") else {
@@ -404,7 +404,7 @@ body=\(String(describing: String(data: data, encoding: .utf8)))
             case 200..<300:
               let decoder = JSONDecoder()
               let activityResponses = try decoder.decode([ActivityResponse].self, from: data)
-              print("activityResponses=\(activityResponses)")
+//              print("activityResponses=\(activityResponses)")
               if activityResponses.count > 0 {
                 continuation.yield(activityResponses)
               } else {
@@ -453,10 +453,10 @@ body=\(String(describing: String(data: data, encoding: .utf8)))
     request.httpMethod = "GET"
     request.addValue("application/json", forHTTPHeaderField: "accept")
     request.addValue("Bearer \(accessToken)", forHTTPHeaderField: "authorization")
-    print("segements req=\(request)")
+//    print("segements req=\(request)")
     do {
       let (data, resp) = try await URLSession.shared.data(for: request)
-      print("response(segments= \(String(describing: String(data: data, encoding: .utf8)))")
+//      print("response(segments= \(String(describing: String(data: data, encoding: .utf8)))")
       guard let resp = resp as? HTTPURLResponse else {
         fatalError("Unexpected non-http response type")
       }

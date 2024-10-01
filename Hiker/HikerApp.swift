@@ -13,7 +13,7 @@ struct HikerApp: App {
     WindowGroup {
       ContentView()
         .onOpenURL { url in
-          print("ContentView1 URL: \(url)")
+//          print("Outh callback URL: \(url)")
         }
     }
 //    .modelContainer(for: AuthContext.self)

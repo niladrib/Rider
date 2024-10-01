@@ -78,13 +78,13 @@ struct ClubsView: View {
 //    }
     .onAppear {
       Task {
-        print("showProgressView=\(showProgressView)")
+//        print("showProgressView=\(showProgressView)")
         if fetchClubsOnAppear {
           Task {
             await fetchClubs()
           }
         } else {
-          print("skipping fetch")
+//          print("skipping fetch")
         }
       }
     }

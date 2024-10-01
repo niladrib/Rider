@@ -133,7 +133,7 @@ struct LocationTrackingView: View {
                               northeastCornerlongitude: center.longitude + span.longitudeDelta/2) else {
               return
             }
-            print("segments near me=\(String(describing: segments))")
+//            print("segments near me=\(String(describing: segments))")
             self.segments = segments
             showingNoSegmentsFoundAlert = (segments.count == 0)
           }
