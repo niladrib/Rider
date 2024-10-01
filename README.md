@@ -9,7 +9,7 @@ This app has no third-party dependencies. To run the app -
 ### Modeling State
 I use `@Observable` objects to model Application State and `@State` structs to model View State. 
 
-Model objects and API responses are modeled separately. I didn’t want to couple the two tightly despite a strong correspondence, which is to be expected. The `AuthContext` object is the root of the model graph, and all model objects are reachable from the `AuthContext` object. 
+Model objects and API responses are modeled separately. I didn’t want to couple the two tightly despite a strong correspondence, which is to be expected. The `AuthContext`, `OAuthController` , and `LocationModel` objects are the root of the model graph, and all model objects are reachable from them. 
 
 ### Error handling
 The error handling strategy is to either handle errors or to make them as visible as possible while minimizing user impact.  
@@ -28,8 +28,7 @@ The app considers three types of errors.
 2. If we store tokens, we need to handle the expiration of access tokens by using the refresh token to get a new access token.
 3. The Strava API Client Secret is stored in the code and needs to be obfuscated. 
 ### Object Model and Caching
-
-![](./Rider.jpg)   
+<img src="./Rider.jpg" height="200">
 
 1. All `fetch*()` methods that make API calls are in the `User` model. This works for a simple schema. As the model schema evolves, they might need to be moved to other objects. For example, the method `fetchKudos()` can be moved from `User` to `Activity`. 
 1. The app caches model objects in memory but doesn’t have an invalidation strategy. We should consider moving the model objects to an encrypted persistent object store such as Realm or Swift Data. We should also have a cache invalidation strategy.
