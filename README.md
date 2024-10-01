@@ -28,7 +28,7 @@ The app considers three types of errors.
 2. If we store tokens, we need to handle the expiration of access tokens by using the refresh token to get a new access token.
 3. The Strava API Client Secret is stored in the code and needs to be obfuscated. 
 ### Object Model and Caching
-<img src="./Rider.jpg" height="200">
+<img src="./Rider.jpg" width="400">
 
 1. All `fetch*()` methods that make API calls are in the `User` model. This works for a simple schema. As the model schema evolves, they might need to be moved to other objects. For example, the method `fetchKudos()` can be moved from `User` to `Activity`. 
 1. The app caches model objects in memory but doesn’t have an invalidation strategy. We should consider moving the model objects to an encrypted persistent object store such as Realm or Swift Data. We should also have a cache invalidation strategy.
