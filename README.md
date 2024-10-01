@@ -22,7 +22,7 @@ The app considers three types of errors.
 ## TODO
 ### UI Styling
 1. The app UI is functional only and needs to be styled. 
-2. It will be nice to show the Polyline for the path since the API returns this information.
+2. It will be nice to show the Polyline for the segment path since the API returns this information.
 
 ### Security
 1. We should store the access and refresh tokens on the phone, after encrypting them, so the user doesn’t have to go through the OAuth login flow every time they launch the app.
