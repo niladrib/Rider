@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
   @Bindable var authContext: AuthContext
   @Binding private(set) var path: [Int]
+  @State private(set) var showProgressView = false
 
   var showStats: Bool {
     return authContext.loggedInUser?.recentRideTotals != nil &&
@@ -19,26 +20,35 @@ struct ProfileView: View {
   var fetchStatsOnAppear = true
   
   var body: some View {
-    List {
-      Section {
-        Text("Name: \(authContext.loggedInUser?.firstname.capitalized ?? "") \(authContext.loggedInUser?.lastname.capitalized ?? "")")
+    ZStack {
+      List {
+        Section {
+          Text("Name: \(authContext.loggedInUser?.firstname.capitalized ?? "") \(authContext.loggedInUser?.lastname.capitalized ?? "")")
+        }
+        if showStats {
+          Section("Recent Rides") {
+            createStatView(stat: authContext.loggedInUser?.allRideTotals)
+          }
+          Section("Year-to-date Rides") {
+            createStatView(stat: authContext.loggedInUser?.allRideTotals)
+          }
+          Section("All Rides") {
+            createStatView(stat: authContext.loggedInUser?.allRideTotals)
+          }
+        }
       }
-      if showStats {
-        Section("Recent Rides") {
-          createStatView(stat: authContext.loggedInUser?.allRideTotals)
-        }
-        Section("Year-to-date Rides") {
-          createStatView(stat: authContext.loggedInUser?.allRideTotals)
-        }
-        Section("All Rides") {
-          createStatView(stat: authContext.loggedInUser?.allRideTotals)
-        }
+      if showProgressView {
+        ProgressView()
       }
     }
     .navigationTitle("Profile")
     .onAppear{
       if self.fetchStatsOnAppear {
         Task {
+          defer {
+            showProgressView = false
+          }
+          showProgressView = true
           do {
             try await authContext.loggedInUser?.fetchRideStats()
           }

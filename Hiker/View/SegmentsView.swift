@@ -79,6 +79,7 @@ struct LocationTrackingView: View {
   @State var currentRegion: MKCoordinateRegion?
   @State var segments = [Segment]()
   @State var displayedSegment: Segment?
+  @State private(set) var showProgressView = false
   
   var body: some View {
     VStack {
@@ -111,12 +112,16 @@ struct LocationTrackingView: View {
       }
       .frame(maxWidth: .infinity, maxHeight: 300)
       .clipped()
-      Button("Search for Segments") {
+      Button(action: {
         guard let center = currentRegion?.center,
               let span = currentRegion?.span else {
           return
         }
         Task {
+          defer {
+            showProgressView = false
+          }
+          showProgressView = true
           do {
             guard let segments = try await authContext
               .loggedInUser?
@@ -136,7 +141,14 @@ struct LocationTrackingView: View {
             path = []
           }
         }
-      }
+      }, label: {
+        HStack {
+          if showProgressView {
+            ProgressView()
+          }
+          Text("Search for Segments")
+        }
+      })
       .padding()
       .buttonStyle(.borderedProminent)
       List {
@@ -147,7 +159,7 @@ struct LocationTrackingView: View {
         }
       }
       Spacer()
-    }
+    }//VStack
     .navigationTitle("Segments")
   }
   

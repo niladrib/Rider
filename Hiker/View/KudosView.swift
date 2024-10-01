@@ -10,6 +10,7 @@ import SwiftUI
 struct KudosView: View {
   @Bindable var authContext: AuthContext
   @Binding private(set) var path: [Int]
+  @State private(set) var showProgressView = true
   private(set) var fetchClubsOnAppear = true //for preview only
   
   var kudoMap: [ActivityResponse:[Kudo]] {
@@ -17,19 +18,28 @@ struct KudosView: View {
   }
   
   var body: some View {
-    List {
-      ForEach(Array(kudoMap.keys), id:\.id) {activity in
-        Section(activity.name){
-          ForEach(kudoMap[activity] ?? []) {kudo in
-            Text("\(kudo.firstname) \(kudo.lastname)")
+    ZStack {
+      List {
+        ForEach(Array(kudoMap.keys), id:\.id) {activity in
+          Section(activity.name){
+            ForEach(kudoMap[activity] ?? []) {kudo in
+              Text("\(kudo.firstname) \(kudo.lastname)")
+            }
           }
         }
       }
+      .padding([.top], 10)
+      if showProgressView {
+        ProgressView()
+      }
     }
-    .padding([.top], 10)
     .navigationTitle("Kudos")
     .onAppear {
       Task {
+        defer {
+          showProgressView = false
+        }
+        showProgressView = true
         do {
           try await authContext.loggedInUser?.fetchKudos()
         }

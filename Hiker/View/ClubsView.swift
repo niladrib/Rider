@@ -41,26 +41,28 @@ struct ClubsView: View {
   @Binding private(set) var path: [Int]
   
   var body: some View {
-    if showProgressView {
-      ProgressView()
-    }
-    if showFetchFailed {
-      HStack {
-        Image(systemName: "exclamationmark.triangle")
-        Text("Error.")
+    ZStack {
+      if showFetchFailed {
+        HStack {
+          Image(systemName: "exclamationmark.triangle")
+          Text("Error.")
+        }
+        .foregroundColor(Color.red)
       }
-      .foregroundColor(Color.red)
-    }
-    List {
-      ForEach(authContext.loggedInUser?.clubs ?? []) {club in
-        NavigationLink(value: club.id) {
-          ClubRowView(club: club)
+      List {
+        ForEach(authContext.loggedInUser?.clubs ?? []) {club in
+          NavigationLink(value: club.id) {
+            ClubRowView(club: club)
+          }
         }
       }
-    }
-    .navigationDestination(for: Int.self) { id in
-      if let club = authContext.loggedInUser?.clubs?.filter({$0.id == id}).first {
-        ClubDetailView(club: club)
+      .navigationDestination(for: Int.self) { id in
+        if let club = authContext.loggedInUser?.clubs?.filter({$0.id == id}).first {
+          ClubDetailView(club: club)
+        }
+      }
+      if showProgressView {
+        ProgressView()
       }
     }
     .navigationTitle("Clubs")
