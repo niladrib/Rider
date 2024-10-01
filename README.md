@@ -19,7 +19,7 @@ The error handling strategy is to either handle errors or to make them as visibl
 
 The app considers three types of errors. 
 1. **Errors that are expected and should be handled.** An example of this is an auth error that is returned as a 401 HTTP status code by the API. The app handles that by logging out the user.
-3. **Non 2xx and 401 http status codes**. The user is given the option to retry the operation that failed. 
+3. **Retriable API errors**. The user is given the option to retry the failed operation. 
 2. **Unexpected errors that should never happen(AND it’s obvious how said errors can NEVER happen)** An example is a malformed URL. The app uses `fatalError` for this which will always trigger a crash.
 2. **Unexpected errors that can dropped on the floor**. The app uses `assert` for this. The `assert` will trigger a crash in debug builds but will be a no-op(a “Hail Mary” pass) otherwise. 
 ## TODO
