@@ -42,13 +42,6 @@ struct ClubsView: View {
   
   var body: some View {
     ZStack {
-      if showFetchFailed {
-        HStack {
-          Image(systemName: "exclamationmark.triangle")
-          Text("Error.")
-        }
-        .foregroundColor(Color.red)
-      }
       List {
         ForEach(authContext.loggedInUser?.clubs ?? []) {club in
           NavigationLink(value: club.id) {
@@ -64,6 +57,17 @@ struct ClubsView: View {
       if showProgressView {
         ProgressView()
       }
+      if showFetchFailed {
+//        HStack {
+//          Image(systemName: "exclamationmark.triangle")
+//          Text("Error.")
+//        }
+//        .foregroundColor(Color.red)
+        GenericRetriableErrorView {
+          startFetchTask()
+        }
+        .font(.title2)
+      }
     }
     .navigationTitle("Clubs")
     /**
@@ -77,19 +81,23 @@ struct ClubsView: View {
 //      }
 //    }
     .onAppear {
-      Task {
-//        print("showProgressView=\(showProgressView)")
-        if fetchClubsOnAppear {
-          Task {
-            await fetchClubs()
-          }
-        } else {
-//          print("skipping fetch")
-        }
-      }
+      startFetchTask()
     }
     .onDisappear{
       self.authContext.loggedInUser?.cancelClubPagesFetch()
+    }
+  }
+  
+  private func startFetchTask(){
+    Task {
+//        print("showProgressView=\(showProgressView)")
+      if fetchClubsOnAppear {
+        Task {
+          await fetchClubs()
+        }
+      } else {
+//          print("skipping fetch")
+      }
     }
   }
   

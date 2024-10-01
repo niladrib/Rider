@@ -30,6 +30,7 @@
 		381AECEB2CAA2962000C5957 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECEA2CAA2962000C5957 /* Segment.swift */; };
 		381AECED2CAA36D6000C5957 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECEC2CAA36D6000C5957 /* LocationModel.swift */; };
 		381AECEF2CAA373F000C5957 /* SegmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECEE2CAA373F000C5957 /* SegmentsView.swift */; };
+		38D3B0AC2CABA47A00060FD6 /* GenericRetriableErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3B0AB2CABA47A00060FD6 /* GenericRetriableErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		381AECEA2CAA2962000C5957 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		381AECEC2CAA36D6000C5957 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		381AECEE2CAA373F000C5957 /* SegmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentsView.swift; sourceTree = "<group>"; };
+		38D3B0AB2CABA47A00060FD6 /* GenericRetriableErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericRetriableErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				381AECE22CA9CDC7000C5957 /* ProfileView.swift */,
 				381AECE82CA9F559000C5957 /* KudosView.swift */,
 				381AECEE2CAA373F000C5957 /* SegmentsView.swift */,
+				38D3B0AB2CABA47A00060FD6 /* GenericRetriableErrorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				381AECD12CA87D1A000C5957 /* TokenResponse.swift in Sources */,
 				381AECE72CA9E398000C5957 /* Kudo.swift in Sources */,
 				381AECE12CA9BA33000C5957 /* StatsResponse.swift in Sources */,
+				38D3B0AC2CABA47A00060FD6 /* GenericRetriableErrorView.swift in Sources */,
 				381AECDF2CA91328000C5957 /* ClubDetailView.swift in Sources */,
 				381AECC92CA732B3000C5957 /* AuthContext.swift in Sources */,
 				381AECD32CA87E4C000C5957 /* AthleteResponse.swift in Sources */,
