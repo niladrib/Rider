@@ -6,6 +6,9 @@ This app has no third-party dependencies. To run the app -
 3. Run (Product -> Run)
 
 ## Design Considerations
+### Architecture
+I picked MVC as the architecture. Given the app's simple UI, MVC seems appropriate. As we add more complex screens, we should consider using MVVM for those screens. As the navigation grows more complex we should consider adding a Co-ordinator to handle the navigation. 
+
 ### Modeling State
 I use `@Observable` objects to model Application State and `@State` structs to model View State. 
 
