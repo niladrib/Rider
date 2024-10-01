@@ -118,6 +118,7 @@ struct LocationTrackingView: View {
               let span = currentRegion?.span else {
           return
         }
+        self.segments = []
         Task {
           defer {
             showProgressView = false
