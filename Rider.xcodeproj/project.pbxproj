@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		381AECB82CA724C0000C5957 /* HikerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECB72CA724C0000C5957 /* HikerApp.swift */; };
+		381AECB82CA724C0000C5957 /* RiderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECB72CA724C0000C5957 /* RiderApp.swift */; };
 		381AECBA2CA724C0000C5957 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECB92CA724C0000C5957 /* ContentView.swift */; };
 		381AECBC2CA724C1000C5957 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 381AECBB2CA724C1000C5957 /* Assets.xcassets */; };
 		381AECBF2CA724C1000C5957 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 381AECBE2CA724C1000C5957 /* Preview Assets.xcassets */; };
@@ -36,7 +36,7 @@
 
 /* Begin PBXFileReference section */
 		381AECB42CA724C0000C5957 /* Rider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rider.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		381AECB72CA724C0000C5957 /* HikerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikerApp.swift; sourceTree = "<group>"; };
+		381AECB72CA724C0000C5957 /* RiderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiderApp.swift; sourceTree = "<group>"; };
 		381AECB92CA724C0000C5957 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		381AECBB2CA724C1000C5957 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		381AECBE2CA724C1000C5957 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 		381AECAB2CA724C0000C5957 = {
 			isa = PBXGroup;
 			children = (
-				381AECB62CA724C0000C5957 /* Hiker */,
+				381AECB62CA724C0000C5957 /* Source */,
 				381AECB52CA724C0000C5957 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,19 +91,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		381AECB62CA724C0000C5957 /* Hiker */ = {
+		381AECB62CA724C0000C5957 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				381AECC72CA7328B000C5957 /* View */,
 				381AECC62CA73279000C5957 /* Model */,
 				381AECC52CA72A0A000C5957 /* Info.plist */,
-				381AECB72CA724C0000C5957 /* HikerApp.swift */,
+				381AECB72CA724C0000C5957 /* RiderApp.swift */,
 				381AECBB2CA724C1000C5957 /* Assets.xcassets */,
 				381AECBD2CA724C1000C5957 /* Preview Content */,
 				381AECD42CA8843E000C5957 /* RiderError.swift */,
 				38D3B0AD2CABB53000060FD6 /* Binding+onChange.swift */,
 			);
-			path = Hiker;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		381AECBD2CA724C1000C5957 /* Preview Content */ = {
@@ -234,7 +234,7 @@
 				381AECE92CA9F559000C5957 /* KudosView.swift in Sources */,
 				381AECBA2CA724C0000C5957 /* ContentView.swift in Sources */,
 				381AECEB2CAA2962000C5957 /* Segment.swift in Sources */,
-				381AECB82CA724C0000C5957 /* HikerApp.swift in Sources */,
+				381AECB82CA724C0000C5957 /* RiderApp.swift in Sources */,
 				38D3B0AE2CABB53000060FD6 /* Binding+onChange.swift in Sources */,
 				381AECD12CA87D1A000C5957 /* TokenResponse.swift in Sources */,
 				381AECE72CA9E398000C5957 /* Kudo.swift in Sources */,
@@ -381,11 +381,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Hiker/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Source/Preview Content\"";
 				DEVELOPMENT_TEAM = S2AWZTG639;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Hiker/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -411,11 +411,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Hiker/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Source/Preview Content\"";
 				DEVELOPMENT_TEAM = S2AWZTG639;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Hiker/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

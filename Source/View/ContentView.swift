@@ -62,7 +62,7 @@ struct ContentView: View {
         }
       }
       .padding()
-      .navigationTitle("Hiker")
+      .navigationTitle("Rider")
       .toolbar {
         if authContext?.isLoggedIn ?? false {
           Button("Logout"){}
