@@ -13,9 +13,15 @@ fileprivate enum Tabs: String {
 
 struct LandingPageView: View {
   @State private var selectedTab = Tabs.landing
-  @Bindable var authContext: AuthContext
-  @Bindable var location: LocationModel
+  private var authContext: AuthContext
+  private var location: LocationModel
   @State private var path = [Int]()
+  
+  init(authContext: AuthContext, location: LocationModel, path: [Int] = [Int]()) {
+    self.authContext = authContext
+    self.location = location
+    self.path = path
+  }
   
   var body: some View {
     TabView(selection: $selectedTab.onChange{ _ in path = []}) {

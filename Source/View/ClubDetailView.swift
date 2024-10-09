@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct ClubDetailView: View {
-  let club: Club
+  private let club: Club
+  
+  init(club: Club) {
+    self.club = club
+  }
+  
   var body: some View {
       VStack(alignment: .leading, spacing: 20) {
         Text(club.name)

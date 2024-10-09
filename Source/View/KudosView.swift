@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct KudosView: View {
-  @Bindable var authContext: AuthContext
-  @Binding private(set) var path: [Int]
-  @State private(set) var showProgressView = true
-  @State private(set) var showFetchFailed = false
-  private(set) var fetchClubsOnAppear = true //for preview only
+  private var authContext: AuthContext
+  @Binding private var path: [Int]
+  @State private var showProgressView = true
+  @State private var showFetchFailed = false
+  private var fetchClubsOnAppear = true //for preview only
   
-  var kudoMap: [ActivityResponse:[Kudo]] {
+  init(authContext: AuthContext, path: Binding<[Int]>, showProgressView: Bool = true, showFetchFailed: Bool = false, fetchClubsOnAppear: Bool = true) {
+    self.authContext = authContext
+    self._path = path
+    self.showProgressView = showProgressView
+    self.showFetchFailed = showFetchFailed
+    self.fetchClubsOnAppear = fetchClubsOnAppear
+  }
+  
+  private var kudoMap: [ActivityResponse:[Kudo]] {
     return authContext.loggedInUser?.kudos ?? [:]
   }
   
@@ -51,7 +59,7 @@ struct KudosView: View {
     }
   }
   
-  func startFetchTask() {
+  private func startFetchTask() {
     Task {
       defer{
         showProgressView = false

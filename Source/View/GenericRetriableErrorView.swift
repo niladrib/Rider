@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct GenericRetriableErrorView: View {
-  var retryHandler: () -> Void
+  private var retryHandler: () -> Void
+  
+  init(retryHandler: @escaping () -> Void) {
+    self.retryHandler = retryHandler
+  }
+  
   var body: some View {
     HStack {
       Text("A temporary error has ocurred")

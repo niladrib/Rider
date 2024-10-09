@@ -10,9 +10,13 @@ import SwiftUI
 import AuthenticationServices
 
 struct ContentView: View {
-  let authController = OAuthController()
-  let location = LocationModel()
-  @State var authContext: AuthContext?
+  private let authController = OAuthController()
+  private let location = LocationModel()
+  @State private var authContext: AuthContext?
+  
+  init(authContext: AuthContext? = nil) {
+    self.authContext = authContext
+  }
   
   var loggedOutView: some View {
     Button("Login") {

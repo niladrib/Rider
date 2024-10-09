@@ -8,17 +8,26 @@
 import SwiftUI
 
 struct ProfileView: View {
-  @Bindable var authContext: AuthContext
-  @Binding private(set) var path: [Int]
-  @State private(set) var showProgressView = false
-  @State private(set) var showFetchFailed = false
+  private var authContext: AuthContext
+  @Binding private var path: [Int]
+  @State private var showProgressView = false
+  @State private var showFetchFailed = false
+  
+  init(authContext: AuthContext, path: Binding<[Int]>, showProgressView: Bool = false, showFetchFailed: Bool = false, fetchStatsOnAppear: Bool = true) {
+    self.authContext = authContext
+    self._path = path
+    self.showProgressView = showProgressView
+    self.showFetchFailed = showFetchFailed
+    self.fetchStatsOnAppear = fetchStatsOnAppear
+  }
 
-  var showStats: Bool {
+  private var showStats: Bool {
     return authContext.loggedInUser?.recentRideTotals != nil &&
     authContext.loggedInUser?.ytdRideTotals != nil &&
     authContext.loggedInUser?.allRideTotals != nil
   }
-  var fetchStatsOnAppear = true
+  
+  private var fetchStatsOnAppear = true
   
   var body: some View {
     ZStack {

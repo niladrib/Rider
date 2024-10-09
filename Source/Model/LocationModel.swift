@@ -39,8 +39,15 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
     
     super.init()
     locationManager.delegate = self
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+  }
+  
+  func startUpdatingLocation() {
     locationManager.startUpdatingLocation()
+  }
+  
+  func stopUpdatingLocation() {
+    locationManager.stopUpdatingLocation()
   }
   
   func requestPermission() {
@@ -52,11 +59,15 @@ class LocationModel: NSObject, CLLocationManagerDelegate {
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    lastSeenLocation = locations.first
-    fetchCountryAndCity(for: locations.first)
+//    print("new loc: \(String(describing: locations.first?.coordinate))")
+    if lastSeenLocation != locations.first {
+      lastSeenLocation = locations.first
+      fetchCountryAndCity(for: locations.first)
+    }
   }
   
   func fetchCountryAndCity(for location: CLLocation?) {
+//    print("fetchCountryAndCity()")
     guard let location = location else { return }
     let geocoder = CLGeocoder()
     geocoder.reverseGeocodeLocation(location) { (placemarks, error) in

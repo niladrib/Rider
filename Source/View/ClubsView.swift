@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct ClubRowView: View {
-  let club: Club
+  private let club: Club
+  
+  init(club: Club) {
+    self.club = club
+  }
+  
   var body: some View {
     HStack {
       AsyncImage(url: club.profile_medium) { phase in
@@ -34,11 +39,21 @@ struct ClubRowView: View {
 }
 
 struct ClubsView: View {
-  @Bindable var authContext: AuthContext
-  private(set) var fetchClubsOnAppear = true //for preview only
-  @State private(set) var showProgressView = true
-  @State private(set) var showFetchFailed = false
-  @Binding private(set) var path: [Int]
+  private var authContext: AuthContext
+  private var fetchClubsOnAppear = true //for preview only
+  @State private var showProgressView = true
+  @State private var showFetchFailed = false
+  @Binding private var path: [Int]
+  
+  init(authContext: AuthContext, fetchClubsOnAppear: Bool = true,
+       showProgressView: Bool = true, showFetchFailed: Bool = false,
+       path: Binding<[Int]>) {
+    self.authContext = authContext
+    self.fetchClubsOnAppear = fetchClubsOnAppear
+    self.showProgressView = showProgressView
+    self.showFetchFailed = showFetchFailed
+    self._path = path
+  }
   
   var body: some View {
     ZStack {
@@ -114,6 +129,7 @@ struct ClubsView: View {
   let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)
   @State var path = [Int]()
   let cv = ClubsView(authContext: authCtx, fetchClubsOnAppear: false,
-                     showProgressView: false, showFetchFailed: true, path: $path)
+                     showProgressView: false, showFetchFailed: true, 
+                     path: $path)
   return cv
 }

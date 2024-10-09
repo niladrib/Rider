@@ -148,6 +148,12 @@ struct LocationTrackingView: View {
       Spacer()
     }//VStack
     .navigationTitle("Segments")
+    .onAppear {
+      locationViewModel.startUpdatingLocation()
+    }
+    .onDisappear {
+      locationViewModel.stopUpdatingLocation()
+    }
   }
   
   private func startFetchTask() {
