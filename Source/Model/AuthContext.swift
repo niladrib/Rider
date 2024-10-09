@@ -9,7 +9,7 @@ import Foundation
 
 @Observable
 class AuthContext {
-  var isLoggedIn: Bool 
+  var isLoggedIn: Bool
   var loggedInUser: User?
   
   init(isLoggedIn: Bool, loggedInUser: User? = nil) {

@@ -8,14 +8,14 @@
 import Foundation
 
 struct Club: Identifiable {
-  var id: Int
-  var name: String
-  var profile_medium: URL
-  let profile: URL
-  var member_count: Int
-  var city: String
-  var state: String
-  var localized_sport_type: String
+  private(set) var id: Int
+  private(set) var name: String
+  private(set) var profile_medium: URL
+  private(set) var profile: URL
+  private(set) var member_count: Int
+  private(set) var city: String
+  private(set) var state: String
+  private(set) var localized_sport_type: String
   
   private init(id: Int, name: String, profile_medium: URL, profile: URL,
                member_count: Int, city: String, state: String, localized_sport_type: String) {

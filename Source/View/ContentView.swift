@@ -76,7 +76,7 @@ struct ContentView: View {
 }
   
 #Preview {
-  let user = User.createTestUser()
+  let user = User.createTestUser(withClubs: Club.createTestClubs())
   let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)
   return ContentView(authContext: authCtx)
 }

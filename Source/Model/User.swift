@@ -11,18 +11,18 @@ fileprivate let MAX_KUDO_COUNT=50
 
 @Observable
 class User {
-  var accessToken: String
-  var refreshToken: String
-  var expiryDate: Date
-  var id: Int
-  var username: String
-  var firstname: String
-  var lastname: String
-  var clubs: [Club]?
-  var kudos: [ActivityResponse: [Kudo]]?
-  var recentRideTotals: Stat?
-  var allRideTotals: Stat?
-  var ytdRideTotals: Stat?
+  private(set) var accessToken: String
+  private(set) var refreshToken: String
+  private(set) var expiryDate: Date
+  private(set) var id: Int
+  private(set) var username: String
+  private(set) var firstname: String
+  private(set) var lastname: String
+  private(set) var clubs: [Club]?
+  private(set) var kudos: [ActivityResponse: [Kudo]]?
+  private(set) var recentRideTotals: Stat?
+  private(set) var allRideTotals: Stat?
+  private(set) var ytdRideTotals: Stat?
 
   private init(resp: TokenResponse) {
     self.accessToken = resp.access_token
@@ -153,13 +153,15 @@ class User {
     }
   }
                                                   
-  static func createTestUser() -> User {
-    return User(accessToken: "381737", refreshToken: "adhjhd",
+  static func createTestUser(withClubs clubs: [Club]) -> User {
+    let user = User(accessToken: "381737", refreshToken: "adhjhd",
                 expiryDate: Date(), id: 37873,
                 username: "n_b", firstname: "niladri", lastname: "bora",
                 recentRideTotals: Stat(count: 2, distance: 200, moving_time: 4774, elapsed_time: 4774, elevation_gain: 24, achievement_count: 0),
                 ytdRideTotals: Stat(count: 3, distance: 210, moving_time: 4784, elapsed_time: 4784, elevation_gain: 28, achievement_count: 1),
                 allRideTotals: Stat(count: 4, distance: 300, moving_time: 4874, elapsed_time: 4874, elevation_gain: 34, achievement_count: 2))
+    user.clubs = clubs
+    return user
   }
   
   static func fetchToken(withCode code: String) async -> Result<User, Error> {

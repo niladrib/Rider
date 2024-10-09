@@ -205,8 +205,7 @@ struct LocationTrackingView: View {
 }
 
 #Preview {
-  let user = User.createTestUser()
-  user.clubs = Club.createTestClubs()
+  let user = User.createTestUser(withClubs: Club.createTestClubs())
   let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)
   @State var path = [Int]()
   return SegmentsView(locationViewModel: LocationModel(), authContext: authCtx, path: $path)
