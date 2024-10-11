@@ -26,7 +26,7 @@ extension CLLocationCoordinate2D {
  attribution: https://www.andyibanez.com/posts/using-corelocation-with-swiftui/
  */
 class LocationModel: NSObject, CLLocationManagerDelegate, ObservableObject {
-  var authorizationStatus: CLAuthorizationStatus
+  @Published var authorizationStatus: CLAuthorizationStatus
   var lastSeenLocation: CLLocation?
   var currentPlacemark: CLPlacemark?
   
@@ -58,8 +58,15 @@ class LocationModel: NSObject, CLLocationManagerDelegate, ObservableObject {
   }
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//    print("new loc: \(String(describing: locations.first?.coordinate))")
-    if lastSeenLocation != locations.first {
+    if let lastSeenLocation = self.lastSeenLocation,
+       let newLocation = locations.first {
+      let distance = lastSeenLocation.distance(from: newLocation)
+//      print("distance=\(distance)")
+      if distance > 100 {
+        self.lastSeenLocation = newLocation
+        fetchCountryAndCity(for: newLocation)
+      }
+    } else {
       lastSeenLocation = locations.first
       fetchCountryAndCity(for: locations.first)
     }
