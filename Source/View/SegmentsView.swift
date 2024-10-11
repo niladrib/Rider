@@ -14,8 +14,8 @@ import MapKit
  */
 
 struct SegmentsView: View {
-  @EnvironmentObject var locationViewModel: LocationModel
-  @EnvironmentObject var authContext: AuthContext
+  @EnvironmentObject private var locationViewModel: LocationModel
+  @EnvironmentObject private var authContext: AuthContext
   @Binding private(set) var path: [Int]
   
   var body: some View {
@@ -39,7 +39,7 @@ struct SegmentsView: View {
 }
 
 struct RequestLocationView: View {
-  @EnvironmentObject var locationViewModel: LocationModel
+  @EnvironmentObject private var locationViewModel: LocationModel
   
   var body: some View {
     VStack {
@@ -71,9 +71,9 @@ struct LocationErrorView: View {
 }
 
 struct LocationTrackingView: View {
-  @EnvironmentObject var locationViewModel: LocationModel
-  @EnvironmentObject var authContext: AuthContext
-  @Binding  var path: [Int]
+  @EnvironmentObject private var locationViewModel: LocationModel
+  @EnvironmentObject private var authContext: AuthContext
+  @Binding var path: [Int]
   @State private var position: MapCameraPosition = .userLocation(
     fallback: .camera(
       MapCamera(centerCoordinate: .sanFrancisco, distance: 10)

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct KudosView: View {
-  @EnvironmentObject var authContext: AuthContext
+  @EnvironmentObject private var authContext: AuthContext
   @Binding private var path: [Int]
   @State private var showProgressView = true
   @State private var showFetchFailed = false

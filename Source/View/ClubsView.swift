@@ -39,7 +39,7 @@ struct ClubRowView: View {
 }
 
 struct ClubsView: View {
-  @EnvironmentObject var authContext: AuthContext
+  @EnvironmentObject private var authContext: AuthContext
   private let makeApiCallsOnAppear: Bool
   @State private var showProgressView = true
   @State private var showFetchFailed = false

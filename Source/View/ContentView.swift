@@ -11,8 +11,8 @@ import AuthenticationServices
 
 struct ContentView: View {
   private let authController = OAuthController()
-  @EnvironmentObject var locationModel:LocationModel
-  @EnvironmentObject var authContext: AuthContext
+  @EnvironmentObject private var locationModel:LocationModel
+  @EnvironmentObject private var authContext: AuthContext
   @State private var isLoginInProgress = false
   
   var loggedOutView: some View {

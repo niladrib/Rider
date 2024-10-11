@@ -13,8 +13,8 @@ fileprivate enum Tabs: String {
 
 struct LandingPageView: View {
   @State private var selectedTab = Tabs.landing
-  @EnvironmentObject var authContext: AuthContext
-  @EnvironmentObject var locationModel: LocationModel
+  @EnvironmentObject private var authContext: AuthContext
+  @EnvironmentObject private var locationModel: LocationModel
   @State private var path = [Int]()
   
   var body: some View {

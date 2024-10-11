@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-  @EnvironmentObject var authContext: AuthContext
+  @EnvironmentObject private var authContext: AuthContext
   @Binding private var path: [Int]
   @State private var showProgressView = false
   @State private var showFetchFailed = false
