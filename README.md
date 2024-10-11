@@ -42,7 +42,7 @@ The app needs a linter and unit tests.
 
 ### Known Issues
 
-- A warning shows up in the run log that indicates that MapKit is making too many reverse geo-coding requests. To my knowledge, this doesn’t cause any issues with the user experience but should be looked into. 
+- ~~A warning shows up in the run log that indicates that MapKit is making too many reverse geo-coding requests. To my knowledge, this doesn’t cause any issues with the user experience but should be looked into.~~ 
 
 ## Attributions
 I have used the following work done by others - 
