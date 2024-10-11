@@ -8,18 +8,30 @@
 import SwiftUI
 
 struct KudosView: View {
-  private var authContext: AuthContext
+  private let authContext: AuthContext
   @Binding private var path: [Int]
   @State private var showProgressView = true
   @State private var showFetchFailed = false
-  private var fetchClubsOnAppear = true //for preview only
+  private let makeAPICallOnAppear: Bool
   
-  init(authContext: AuthContext, path: Binding<[Int]>, showProgressView: Bool = true, showFetchFailed: Bool = false, fetchClubsOnAppear: Bool = true) {
+  init(authContext: AuthContext, path: Binding<[Int]>){
     self.authContext = authContext
     self._path = path
-    self.showProgressView = showProgressView
-    self.showFetchFailed = showFetchFailed
-    self.fetchClubsOnAppear = fetchClubsOnAppear
+    self.makeAPICallOnAppear = true
+  }
+  
+  /**
+   For preview only
+   */
+  fileprivate init(authContext: AuthContext, path: Binding<[Int]>,
+                   showProgressViewInitialValue: Bool = true,
+                   showFetchFailedInitialValue: Bool = false,
+                   makeAPICallOnAppear: Bool = true) {
+    self.authContext = authContext
+    self._path = path
+    _showProgressView = State(initialValue: showProgressViewInitialValue)
+    _showFetchFailed = State(initialValue: showFetchFailedInitialValue)
+    self.makeAPICallOnAppear = makeAPICallOnAppear
   }
   
   private var kudoMap: [ActivityResponse:[Kudo]] {
@@ -50,7 +62,11 @@ struct KudosView: View {
     }
     .navigationTitle("Kudos")
     .onAppear {
-      startFetchTask()
+      if makeAPICallOnAppear {
+        startFetchTask()
+      } else {
+        print("skipping API call")
+      }
     }
     .onDisappear() {
       Task {
@@ -82,11 +98,14 @@ struct KudosView: View {
     }
   }
 }
-
+ 
 #Preview {
   let user = User.createTestUser(withClubs: Club.createTestClubs())
   let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)
   @State var path = [Int]()
-  return  KudosView(authContext: authCtx, path: $path, fetchClubsOnAppear: false)
+  return  KudosView(authContext: authCtx, path: $path, 
+                    showProgressViewInitialValue: false,
+                    showFetchFailedInitialValue: true,
+                    makeAPICallOnAppear: false)
   
 }

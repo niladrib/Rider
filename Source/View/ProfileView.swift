@@ -12,13 +12,26 @@ struct ProfileView: View {
   @Binding private var path: [Int]
   @State private var showProgressView = false
   @State private var showFetchFailed = false
+  private let makeApiCallsOnAppear: Bool
   
-  init(authContext: AuthContext, path: Binding<[Int]>, showProgressView: Bool = false, showFetchFailed: Bool = false, fetchStatsOnAppear: Bool = true) {
+  init(authContext: AuthContext, path: Binding<[Int]>) {
     self.authContext = authContext
     self._path = path
-    self.showProgressView = showProgressView
-    self.showFetchFailed = showFetchFailed
-    self.fetchStatsOnAppear = fetchStatsOnAppear
+    self.makeApiCallsOnAppear = true
+  }
+  
+  /**
+   For previews only
+   */
+  fileprivate init(authContext: AuthContext, path: Binding<[Int]>, 
+                   showProgressViewInitialValue: Bool = false,
+                   showFetchFailedInitialValue: Bool = false,
+                   fetchStatsOnAppear: Bool = true) {
+    self.authContext = authContext
+    self._path = path
+    _showProgressView = State(initialValue: showProgressViewInitialValue)
+    _showFetchFailed = State(initialValue: showFetchFailedInitialValue)
+    self.makeApiCallsOnAppear = fetchStatsOnAppear
   }
 
   private var showStats: Bool {
@@ -26,8 +39,6 @@ struct ProfileView: View {
     authContext.loggedInUser?.ytdRideTotals != nil &&
     authContext.loggedInUser?.allRideTotals != nil
   }
-  
-  private var fetchStatsOnAppear = true
   
   var body: some View {
     ZStack {
@@ -64,7 +75,7 @@ struct ProfileView: View {
   }
   
   private func startFetchTask() {
-    if self.fetchStatsOnAppear {
+    if self.makeApiCallsOnAppear {
       Task {
         defer {
           showProgressView = false

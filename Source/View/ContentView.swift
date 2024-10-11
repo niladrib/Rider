@@ -11,12 +11,16 @@ import AuthenticationServices
 
 struct ContentView: View {
   private let authController = OAuthController()
-  private let location = LocationModel()
-  @State private var authContext: AuthContext?
+  private let locationModel = LocationModel()
+  private let authContext: AuthContext
   @State private var isLoginInProgress = false
   
   init(authContext: AuthContext? = nil) {
-    self.authContext = authContext
+    if let authContext = authContext {
+      self.authContext = authContext
+    } else {
+      self.authContext = AuthContext(isLoggedIn: false)
+    }
   }
   
   var loggedOutView: some View {
@@ -43,11 +47,11 @@ struct ContentView: View {
             let result = await User.fetchToken(withCode: code)
             switch result{
             case let .success(user):
-              self.authContext = AuthContext(isLoggedIn: true, loggedInUser: user)
+              self.authContext.isLoggedIn = true
+              self.authContext.loggedInUser = user
               
             case let.failure(error):
               print("error=\(error)")
-              self.authContext = AuthContext(isLoggedIn: false)
             }
           }catch {
             print("Got Auth Error=\(error)")
@@ -62,30 +66,28 @@ struct ContentView: View {
   
   var loggedInView: some View {
     VStack {
-      if let authContext = authContext {
-        LandingPageView(authContext: authContext, location: location)
-      }
+      LandingPageView(authContext: authContext, location: locationModel)
     }
   }
   
   var body: some View {
-      VStack {
-        if authContext?.isLoggedIn ?? false {
-          loggedInView
-        } else {
-          loggedOutView
-        }
+    VStack {
+      if authContext.isLoggedIn {
+        loggedInView
+      } else {
+        loggedOutView
       }
-      .padding()
-      .navigationTitle("Rider")
-      .toolbar {
-        if authContext?.isLoggedIn ?? false {
-          Button("Logout"){}
-        }
+    }
+    .padding()
+    .navigationTitle("Rider")
+    .toolbar {
+      if authContext.isLoggedIn {
+        Button("Logout"){}
       }
+    }
   }
 }
-  
+
 #Preview {
   let user = User.createTestUser(withClubs: Club.createTestClubs())
   let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)

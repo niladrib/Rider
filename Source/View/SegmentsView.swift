@@ -68,20 +68,20 @@ struct LocationErrorView: View {
 }
 
 struct LocationTrackingView: View {
-  @Bindable var locationViewModel: LocationModel
-  @Bindable var authContext: AuthContext
-  @Binding private(set) var path: [Int]
-  @State var position: MapCameraPosition = .userLocation(
+  let locationViewModel: LocationModel
+  let authContext: AuthContext
+  @Binding  var path: [Int]
+  @State private var position: MapCameraPosition = .userLocation(
     fallback: .camera(
       MapCamera(centerCoordinate: .sanFrancisco, distance: 10)
     )
   )
-  @State var currentRegion: MKCoordinateRegion?
-  @State var segments = [Segment]()
-  @State var displayedSegment: Segment?
-  @State private(set) var showProgressView = false
+  @State private var currentRegion: MKCoordinateRegion?
+  @State private var segments = [Segment]()
+  @State private var displayedSegment: Segment?
+  @State private var showProgressView = false
   @State private var showingNoSegmentsFoundAlert = false
-  @State private(set) var showFetchFailed = false
+  @State private var showFetchFailed = false
   
   var body: some View {
     VStack {

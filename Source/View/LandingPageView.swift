@@ -13,14 +13,13 @@ fileprivate enum Tabs: String {
 
 struct LandingPageView: View {
   @State private var selectedTab = Tabs.landing
-  private var authContext: AuthContext
-  private var location: LocationModel
+  private let authContext: AuthContext
+  private let locationModel: LocationModel
   @State private var path = [Int]()
   
-  init(authContext: AuthContext, location: LocationModel, path: [Int] = [Int]()) {
+  init(authContext: AuthContext, location: LocationModel) {
     self.authContext = authContext
-    self.location = location
-    self.path = path
+    self.locationModel = location
   }
   
   var body: some View {
@@ -42,7 +41,7 @@ struct LandingPageView: View {
       .tag(Tabs.kudos)
       
       NavigationStack(path: $path) {
-        SegmentsView(locationViewModel: location, authContext: authContext,
+        SegmentsView(locationViewModel: locationModel, authContext: authContext,
         path: $path)
       }
       .tabItem {

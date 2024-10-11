@@ -13,8 +13,14 @@ struct RiderApp: App {
     WindowGroup {
       ContentView()
         .onOpenURL { url in
-//          print("Outh callback URL: \(url)")
+          //          print("Outh callback URL: \(url)")
         }
+//        .environmentObject(RiderAppPreviewContext())
     }
   }
 }
+
+//class RiderAppPreviewContext: ObservableObject {
+//  @Published var isDebug = false
+//  @Published var makeApiCallsOnAppear = true
+//}

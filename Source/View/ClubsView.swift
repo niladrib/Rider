@@ -39,20 +39,30 @@ struct ClubRowView: View {
 }
 
 struct ClubsView: View {
-  private var authContext: AuthContext
-  private var fetchClubsOnAppear = true //for preview only
+  private let authContext: AuthContext
+  private let makeApiCallsOnAppear: Bool
   @State private var showProgressView = true
   @State private var showFetchFailed = false
   @Binding private var path: [Int]
   
-  init(authContext: AuthContext, fetchClubsOnAppear: Bool = true,
-       showProgressView: Bool = true, showFetchFailed: Bool = false,
-       path: Binding<[Int]>) {
+  init(authContext: AuthContext, path: Binding<[Int]>) {
     self.authContext = authContext
-    self.fetchClubsOnAppear = fetchClubsOnAppear
-    self.showProgressView = showProgressView
-    self.showFetchFailed = showFetchFailed
     self._path = path
+    self.makeApiCallsOnAppear = true
+  }
+  
+  /**
+   For previews only
+   */
+  fileprivate init(authContext: AuthContext, path: Binding<[Int]>,
+                   showProgressViewInitialValue: Bool,
+                   showFetchFailedInitialValue: Bool,
+                   makeApiCallsOnAppear: Bool) {
+    self.authContext = authContext
+    _showProgressView = State(initialValue: showProgressViewInitialValue)
+    _showFetchFailed = State(initialValue: showFetchFailedInitialValue)
+    self._path = path
+    self.makeApiCallsOnAppear = makeApiCallsOnAppear
   }
   
   var body: some View {
@@ -91,12 +101,12 @@ struct ClubsView: View {
   private func startFetchTask(){
     Task {
 //        print("showProgressView=\(showProgressView)")
-      if fetchClubsOnAppear {
+      if makeApiCallsOnAppear {
         Task {
           await fetchClubs()
         }
       } else {
-//          print("skipping fetch")
+          print("skipping fetch")
       }
     }
   }
@@ -127,8 +137,8 @@ struct ClubsView: View {
   let user = User.createTestUser(withClubs: Club.createTestClubs())
   let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)
   @State var path = [Int]()
-  let cv = ClubsView(authContext: authCtx, fetchClubsOnAppear: false,
-                     showProgressView: false, showFetchFailed: true, 
-                     path: $path)
-  return cv
+  return ClubsView(authContext: authCtx, path: $path,
+                   showProgressViewInitialValue: true,
+                   showFetchFailedInitialValue: false,
+                   makeApiCallsOnAppear: false)
 }
