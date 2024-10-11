@@ -14,21 +14,24 @@ import MapKit
  */
 
 struct SegmentsView: View {
-  @Bindable var locationViewModel: LocationModel
-  @Bindable var authContext: AuthContext
+  @EnvironmentObject var locationViewModel: LocationModel
+  @EnvironmentObject var authContext: AuthContext
   @Binding private(set) var path: [Int]
   
   var body: some View {
     switch locationViewModel.authorizationStatus {
     case .notDetermined:
-      AnyView(RequestLocationView(locationViewModel: locationViewModel))
+      RequestLocationView()
+      
     case .restricted:
       LocationErrorView(text: "Location use is restricted.")
+      
     case .denied:
       LocationErrorView(text: "The app does not have location permissions. Please enable them in settings.")
+      
     case .authorizedAlways, .authorizedWhenInUse:
-      LocationTrackingView(locationViewModel: locationViewModel,
-                           authContext: authContext, path: $path)
+      LocationTrackingView(path: $path)
+      
     default:
       Text("Unexpected status")
     }
@@ -36,7 +39,7 @@ struct SegmentsView: View {
 }
 
 struct RequestLocationView: View {
-  @Bindable var locationViewModel: LocationModel
+  @EnvironmentObject var locationViewModel: LocationModel
   
   var body: some View {
     VStack {
@@ -68,8 +71,8 @@ struct LocationErrorView: View {
 }
 
 struct LocationTrackingView: View {
-  let locationViewModel: LocationModel
-  let authContext: AuthContext
+  @EnvironmentObject var locationViewModel: LocationModel
+  @EnvironmentObject var authContext: AuthContext
   @Binding  var path: [Int]
   @State private var position: MapCameraPosition = .userLocation(
     fallback: .camera(
@@ -208,5 +211,7 @@ struct LocationTrackingView: View {
   let user = User.createTestUser(withClubs: Club.createTestClubs())
   let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)
   @State var path = [Int]()
-  return SegmentsView(locationViewModel: LocationModel(), authContext: authCtx, path: $path)
+  return SegmentsView(path: $path)
+    .environmentObject(authCtx)
+    .environmentObject(LocationModel())
 }

@@ -7,10 +7,9 @@
 
 import Foundation
 
-@Observable
-class AuthContext {
-  var isLoggedIn: Bool
-  var loggedInUser: User?
+class AuthContext: ObservableObject {
+  @Published var isLoggedIn: Bool
+  @Published var loggedInUser: User?
   
   init(isLoggedIn: Bool, loggedInUser: User? = nil) {
     self.isLoggedIn = isLoggedIn

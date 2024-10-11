@@ -13,19 +13,14 @@ fileprivate enum Tabs: String {
 
 struct LandingPageView: View {
   @State private var selectedTab = Tabs.landing
-  private let authContext: AuthContext
-  private let locationModel: LocationModel
+  @EnvironmentObject var authContext: AuthContext
+  @EnvironmentObject var locationModel: LocationModel
   @State private var path = [Int]()
-  
-  init(authContext: AuthContext, location: LocationModel) {
-    self.authContext = authContext
-    self.locationModel = location
-  }
   
   var body: some View {
     TabView(selection: $selectedTab.onChange{ _ in path = []}) {
       NavigationStack(path: $path) {
-        ClubsView(authContext: authContext, path: $path)
+        ClubsView(path: $path)
       }
       .tabItem {
         Label("Clubs", systemImage: "person.3.fill")
@@ -33,7 +28,7 @@ struct LandingPageView: View {
       .tag(Tabs.landing)
       
       NavigationStack(path: $path) {
-        KudosView(authContext: authContext, path: $path)
+        KudosView(path: $path)
       }
       .tabItem {
         Label("Kudos", systemImage: "hands.clap.fill")
@@ -41,8 +36,7 @@ struct LandingPageView: View {
       .tag(Tabs.kudos)
       
       NavigationStack(path: $path) {
-        SegmentsView(locationViewModel: locationModel, authContext: authContext,
-        path: $path)
+        SegmentsView(path: $path)
       }
       .tabItem {
         Label("Segments", systemImage: "map.fill")
@@ -50,7 +44,7 @@ struct LandingPageView: View {
       .tag(Tabs.segments)
       
       NavigationStack(path: $path) {
-        ProfileView(authContext: authContext, path: $path)
+        ProfileView(path: $path)
       }
       .tabItem {
         Label("Profile", systemImage: "person.fill")
@@ -64,5 +58,7 @@ struct LandingPageView: View {
 #Preview {
   let user = User.createTestUser(withClubs: Club.createTestClubs())
   let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)
-  return LandingPageView(authContext: authCtx, location: LocationModel())
+  return LandingPageView()
+    .environmentObject(authCtx)
+    .environmentObject(LocationModel())
 }

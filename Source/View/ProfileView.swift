@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ProfileView: View {
-  private var authContext: AuthContext
+  @EnvironmentObject var authContext: AuthContext
   @Binding private var path: [Int]
   @State private var showProgressView = false
   @State private var showFetchFailed = false
   private let makeApiCallsOnAppear: Bool
   
-  init(authContext: AuthContext, path: Binding<[Int]>) {
-    self.authContext = authContext
+  init(path: Binding<[Int]>) {
     self._path = path
     self.makeApiCallsOnAppear = true
   }
@@ -23,11 +22,10 @@ struct ProfileView: View {
   /**
    For previews only
    */
-  fileprivate init(authContext: AuthContext, path: Binding<[Int]>, 
+  fileprivate init(path: Binding<[Int]>,
                    showProgressViewInitialValue: Bool = false,
                    showFetchFailedInitialValue: Bool = false,
                    fetchStatsOnAppear: Bool = true) {
-    self.authContext = authContext
     self._path = path
     _showProgressView = State(initialValue: showProgressViewInitialValue)
     _showFetchFailed = State(initialValue: showFetchFailedInitialValue)
@@ -136,6 +134,7 @@ struct ProfileView: View {
   let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)
   @State var path = [Int]()
   return NavigationStack {
-    ProfileView(authContext: authCtx, path: $path, fetchStatsOnAppear: false)
+    ProfileView(path: $path, fetchStatsOnAppear: false)
+      .environmentObject(authCtx)
   }
 }

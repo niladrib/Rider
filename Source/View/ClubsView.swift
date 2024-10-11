@@ -39,14 +39,13 @@ struct ClubRowView: View {
 }
 
 struct ClubsView: View {
-  private let authContext: AuthContext
+  @EnvironmentObject var authContext: AuthContext
   private let makeApiCallsOnAppear: Bool
   @State private var showProgressView = true
   @State private var showFetchFailed = false
   @Binding private var path: [Int]
   
-  init(authContext: AuthContext, path: Binding<[Int]>) {
-    self.authContext = authContext
+  init(path: Binding<[Int]>) {
     self._path = path
     self.makeApiCallsOnAppear = true
   }
@@ -54,11 +53,10 @@ struct ClubsView: View {
   /**
    For previews only
    */
-  fileprivate init(authContext: AuthContext, path: Binding<[Int]>,
+  fileprivate init(path: Binding<[Int]>,
                    showProgressViewInitialValue: Bool,
                    showFetchFailedInitialValue: Bool,
                    makeApiCallsOnAppear: Bool) {
-    self.authContext = authContext
     _showProgressView = State(initialValue: showProgressViewInitialValue)
     _showFetchFailed = State(initialValue: showFetchFailedInitialValue)
     self._path = path
@@ -137,8 +135,9 @@ struct ClubsView: View {
   let user = User.createTestUser(withClubs: Club.createTestClubs())
   let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)
   @State var path = [Int]()
-  return ClubsView(authContext: authCtx, path: $path,
+  return ClubsView(path: $path,
                    showProgressViewInitialValue: true,
                    showFetchFailedInitialValue: false,
                    makeApiCallsOnAppear: false)
+  .environmentObject(authCtx)
 }

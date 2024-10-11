@@ -15,12 +15,18 @@ struct RiderApp: App {
         .onOpenURL { url in
           //          print("Outh callback URL: \(url)")
         }
-//        .environmentObject(RiderAppPreviewContext())
+        .environmentObject(getAuthContext())
+        .environmentObject(getLocationModel())
     }
+  }
+  
+  private func getAuthContext() -> AuthContext {
+    //TODO: read from encrypted storage to see if user has logged in before
+    return AuthContext(isLoggedIn: false)
+  }
+  
+  private func getLocationModel() -> LocationModel {
+    return LocationModel()
   }
 }
 
-//class RiderAppPreviewContext: ObservableObject {
-//  @Published var isDebug = false
-//  @Published var makeApiCallsOnAppear = true
-//}

@@ -9,20 +9,19 @@ import Foundation
 
 fileprivate let MAX_KUDO_COUNT=50
 
-@Observable
-class User {
-  private(set) var accessToken: String
-  private(set) var refreshToken: String
-  private(set) var expiryDate: Date
-  private(set) var id: Int
-  private(set) var username: String
-  private(set) var firstname: String
-  private(set) var lastname: String
-  private(set) var clubs: [Club]?
-  private(set) var kudos: [ActivityResponse: [Kudo]]?
-  private(set) var recentRideTotals: Stat?
-  private(set) var allRideTotals: Stat?
-  private(set) var ytdRideTotals: Stat?
+class User: ObservableObject {
+  @Published private(set) var accessToken: String
+  @Published private(set) var refreshToken: String
+  @Published private(set) var expiryDate: Date
+  @Published private(set) var id: Int
+  @Published private(set) var username: String
+  @Published private(set) var firstname: String
+  @Published private(set) var lastname: String
+  @Published private(set) var clubs: [Club]?
+  @Published private(set) var kudos: [ActivityResponse: [Kudo]]?
+  @Published private(set) var recentRideTotals: Stat?
+  @Published private(set) var allRideTotals: Stat?
+  @Published private(set) var ytdRideTotals: Stat?
 
   private init(resp: TokenResponse) {
     self.accessToken = resp.access_token
@@ -164,7 +163,7 @@ class User {
     return user
   }
   
-  static func fetchToken(withCode code: String) async -> Result<User, Error> {
+  static func fetchUser(withCode code: String) async -> Result<User, Error> {
 //    print("fetching token")
     let query = [URLQueryItem(name: "client_id", value: "136139"),
                  URLQueryItem(name: "client_secret", value: "d402ce17bb7f40541238430b30b27889d7ea333c"),

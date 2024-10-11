@@ -25,8 +25,7 @@ extension CLLocationCoordinate2D {
 /**
  attribution: https://www.andyibanez.com/posts/using-corelocation-with-swiftui/
  */
-@Observable
-class LocationModel: NSObject, CLLocationManagerDelegate {
+class LocationModel: NSObject, CLLocationManagerDelegate, ObservableObject {
   var authorizationStatus: CLAuthorizationStatus
   var lastSeenLocation: CLLocation?
   var currentPlacemark: CLPlacemark?

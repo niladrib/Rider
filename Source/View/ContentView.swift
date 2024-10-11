@@ -11,17 +11,9 @@ import AuthenticationServices
 
 struct ContentView: View {
   private let authController = OAuthController()
-  private let locationModel = LocationModel()
-  private let authContext: AuthContext
+  @EnvironmentObject var locationModel:LocationModel
+  @EnvironmentObject var authContext: AuthContext
   @State private var isLoginInProgress = false
-  
-  init(authContext: AuthContext? = nil) {
-    if let authContext = authContext {
-      self.authContext = authContext
-    } else {
-      self.authContext = AuthContext(isLoggedIn: false)
-    }
-  }
   
   var loggedOutView: some View {
     HStack(spacing: 5) {
@@ -44,7 +36,7 @@ struct ContentView: View {
             guard let code = components?.queryItems?.filter({ $0.name=="code"}).first?.value else {
               return
             }
-            let result = await User.fetchToken(withCode: code)
+            let result = await User.fetchUser(withCode: code)
             switch result{
             case let .success(user):
               self.authContext.isLoggedIn = true
@@ -66,7 +58,7 @@ struct ContentView: View {
   
   var loggedInView: some View {
     VStack {
-      LandingPageView(authContext: authContext, location: locationModel)
+      LandingPageView()
     }
   }
   
@@ -90,6 +82,8 @@ struct ContentView: View {
 
 #Preview {
   let user = User.createTestUser(withClubs: Club.createTestClubs())
-  let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)
-  return ContentView(authContext: authCtx)
+  let authCtx = AuthContext(isLoggedIn: false, loggedInUser: user)
+  return ContentView()
+    .environmentObject(authCtx)
+    .environmentObject(LocationModel())
 }

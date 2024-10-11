@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct KudosView: View {
-  private let authContext: AuthContext
+  @EnvironmentObject var authContext: AuthContext
   @Binding private var path: [Int]
   @State private var showProgressView = true
   @State private var showFetchFailed = false
   private let makeAPICallOnAppear: Bool
   
-  init(authContext: AuthContext, path: Binding<[Int]>){
-    self.authContext = authContext
+  init(path: Binding<[Int]>){
     self._path = path
     self.makeAPICallOnAppear = true
   }
@@ -23,11 +22,10 @@ struct KudosView: View {
   /**
    For preview only
    */
-  fileprivate init(authContext: AuthContext, path: Binding<[Int]>,
+  fileprivate init(path: Binding<[Int]>,
                    showProgressViewInitialValue: Bool = true,
                    showFetchFailedInitialValue: Bool = false,
                    makeAPICallOnAppear: Bool = true) {
-    self.authContext = authContext
     self._path = path
     _showProgressView = State(initialValue: showProgressViewInitialValue)
     _showFetchFailed = State(initialValue: showFetchFailedInitialValue)
@@ -103,9 +101,10 @@ struct KudosView: View {
   let user = User.createTestUser(withClubs: Club.createTestClubs())
   let authCtx = AuthContext(isLoggedIn: true, loggedInUser: user)
   @State var path = [Int]()
-  return  KudosView(authContext: authCtx, path: $path, 
+  return  KudosView(path: $path,
                     showProgressViewInitialValue: false,
                     showFetchFailedInitialValue: true,
                     makeAPICallOnAppear: false)
+  .environmentObject(authCtx)
   
 }
