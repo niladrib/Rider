@@ -5,6 +5,16 @@ This app has no third-party dependencies. To run the app -
 2. Build (Product -> Build)
 3. Run (Product -> Run)
 
+To use your own Strava API credentials change the following static properties in `Constants.swift`
+
+```
+class Constants {
+  static let CLIENT_ID = "xxx"
+  static let CLIENT_SECRET = "xxxx"
+  static let CALLBACK_DOMAIN = "xxxx"
+}
+```
+
 ## Design Considerations
 ### Architecture
 I picked MVC as the architecture. Given the app's simple UI, MVC seems appropriate. As we add more complex screens, we should consider using MVVM for those screens. As the navigation grows more complex we should consider adding a Co-ordinator to handle the navigation. 

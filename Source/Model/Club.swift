@@ -36,8 +36,8 @@ struct Club: Identifiable {
     }
     self.init(id: response.id, name: response.name
               , profile_medium: profile_medium, profile: profile,
-              member_count: response.member_count, city: response.city,
-              state: response.state, localized_sport_type: response.localized_sport_type)
+              member_count: response.member_count, city: response.city ?? "N.A.",
+              state: response.state ?? "N.A.", localized_sport_type: response.localized_sport_type)
   }
   
   static func createTestClubs() -> [Club] {

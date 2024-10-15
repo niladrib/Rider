@@ -48,7 +48,7 @@ struct ClubResponse: Codable {
   let profile_medium: String
   let profile: String
   let member_count: Int
-  let city: String
-  let state: String
+  let city: String?
+  let state: String?
   let localized_sport_type: String
 }

@@ -30,6 +30,7 @@
 		381AECEB2CAA2962000C5957 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECEA2CAA2962000C5957 /* Segment.swift */; };
 		381AECED2CAA36D6000C5957 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECEC2CAA36D6000C5957 /* LocationModel.swift */; };
 		381AECEF2CAA373F000C5957 /* SegmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AECEE2CAA373F000C5957 /* SegmentsView.swift */; };
+		38CBAD9B2CBDF9D6004274FE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38CBAD9A2CBDF9D6004274FE /* Constants.swift */; };
 		38D3B0AC2CABA47A00060FD6 /* GenericRetriableErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3B0AB2CABA47A00060FD6 /* GenericRetriableErrorView.swift */; };
 		38D3B0AE2CABB53000060FD6 /* Binding+onChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38D3B0AD2CABB53000060FD6 /* Binding+onChange.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		381AECEA2CAA2962000C5957 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		381AECEC2CAA36D6000C5957 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		381AECEE2CAA373F000C5957 /* SegmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentsView.swift; sourceTree = "<group>"; };
+		38CBAD9A2CBDF9D6004274FE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		38D3B0AB2CABA47A00060FD6 /* GenericRetriableErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericRetriableErrorView.swift; sourceTree = "<group>"; };
 		38D3B0AD2CABB53000060FD6 /* Binding+onChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+onChange.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 				381AECDA2CA8C039000C5957 /* Club.swift */,
 				381AECE62CA9E398000C5957 /* Kudo.swift */,
 				381AECEC2CAA36D6000C5957 /* LocationModel.swift */,
+				38CBAD9A2CBDF9D6004274FE /* Constants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				381AECE52CA9E298000C5957 /* ActivityResponse.swift in Sources */,
 				381AECDD2CA8ECBA000C5957 /* ClubsView.swift in Sources */,
 				381AECCE2CA750A8000C5957 /* OAuthController.swift in Sources */,
+				38CBAD9B2CBDF9D6004274FE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

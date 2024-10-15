@@ -165,8 +165,8 @@ class User: ObservableObject {
   
   static func fetchUser(withCode code: String) async -> Result<User, Error> {
 //    print("fetching token")
-    let query = [URLQueryItem(name: "client_id", value: "136139"),
-                 URLQueryItem(name: "client_secret", value: "d402ce17bb7f40541238430b30b27889d7ea333c"),
+    let query = [URLQueryItem(name: "client_id", value: Constants.CLIENT_ID),
+                 URLQueryItem(name: "client_secret", value: Constants.CLIENT_SECRET),
                  URLQueryItem(name: "code", value: code),
                  URLQueryItem(name: "grant_type", value: "authorization_code")]
     guard var urlComponents = URLComponents(string: "https://www.strava.com/api/v3/oauth/token") else {

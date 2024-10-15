@@ -27,7 +27,7 @@ struct ContentView: View {
           defer {
             isLoginInProgress = false
           }
-          let webOAuthUrl = URL(string: "https://www.strava.com/oauth/mobile/authorize?client_id=136139&redirect_uri=bora.niladri.Hiker%3A%2F%2Fdevelopers.strava.com&response_type=code&approval_prompt=auto&scope=activity%3Aread%2Cread&state=test")!
+          let webOAuthUrl = URL(string: "https://www.strava.com/oauth/mobile/authorize?client_id=\(Constants.CLIENT_ID)&redirect_uri=\(Bundle.main.bundleIdentifier ?? "")%3A%2F%2F\(Constants.CALLBACK_DOMAIN)&response_type=code&approval_prompt=auto&scope=activity%3Aread%2Cread&state=test")!
           
           do {
             let url = try await authController.webAuth(url: webOAuthUrl, callbackURLScheme: "bora.niladri.Hiker", prefersEphemeralWebBrowserSession: true)
